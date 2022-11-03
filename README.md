@@ -35,3 +35,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 5. [Infinite Scrolling In Angular](https://blog.openreplay.com/infinite-scrolling-in-angular/)
 6. [Infinite Scrolling In Angular - repo](https://github.com/EJINEROZ/Infinite-Scroller-With-Angular)
 7. [Angular infinite table scroll](https://stackblitz.com/edit/angular-material-data-table-infinite-scroll)
+8. [Shared Modules in Angular](https://dev.to/jwp/shared-modules-in-angular-274k)

@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { PicCardComponent } from './pic-card/pic-card.component';
+
+const routes: Routes = [
+  { path: '', component: PicCardComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
