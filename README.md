@@ -43,3 +43,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 7. [Angular infinite table scroll](https://stackblitz.com/edit/angular-material-data-table-infinite-scroll)
 8. [Shared Modules in Angular](https://dev.to/jwp/shared-modules-in-angular-274k)
 9. [angular-cli-ghpages - gitHub deployemnt](https://www.npmjs.com/package/angular-cli-ghpages)
+10. [Modern CSS in Angular: Layouts](https://blog.angular.io/modern-css-in-angular-layouts-4a259dca9127)
+11. [Angular Flex-Layout](https://www.npmjs.com/package/@angular/flex-layout)
+12. [Angular Material Navigation Menu – Complete Responsive Navigation](https://code-maze.com/angular-material-navigation/)
