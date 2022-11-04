@@ -1,41 +1,51 @@
-import { AfterViewInit, Component, NgZone, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
-import { filter, map, pairwise, throttleTime, timer } from 'rxjs';
+import { filter, map, pairwise, Subscription, throttleTime, timer } from 'rxjs';
 
 @Component({
   selector: 'app-pic-card',
   templateUrl: './pic-card.component.html',
   styleUrls: ['./pic-card.component.scss']
 })
-export class PicCardComponent implements OnInit, AfterViewInit {
+export class PicCardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('scroller')
   scroller!: CdkVirtualScrollViewport;
 
   listItems: any[] = [];
 
-  loading = false;
+  isLoading = false;
+
+  maxItems = 100;
+
+  unsub!: Subscription;
 
   title = 'Infinite Scroll list using "ScrollingModule"';
 
   constructor(private ngZone: NgZone) { }
 
   ngAfterViewInit(): void {
-    this.scroller.elementScrolled().pipe(
+    this.unsub = this.scroller.elementScrolled().pipe(
       map(() => this.scroller.measureScrollOffset('bottom')),
       pairwise(),
       filter(([y1, y2]) => (y2 < y1 && y2 < 140)),
       throttleTime(200)
     ).subscribe(() => {
       this.ngZone.run(() => {
-        this.fetchMore();
+        (this.maxItems > this.listItems.length) && this.fetchMore();
       });
     })
   }
 
   ngOnInit(): void {
     this.fetchMore();
+  }
+
+  ngOnDestroy(): void {
+    if(this.unsub) {
+      this.unsub.unsubscribe();
+    }
   }
   
 
@@ -54,9 +64,9 @@ export class PicCardComponent implements OnInit, AfterViewInit {
       });
     }
 
-    this.loading = true;
+    this.isLoading = true;
     timer(1000).subscribe(() => {
-      this.loading = false;
+      this.isLoading = false;
       this.listItems = [...this.listItems, ...newItems];
     });
 

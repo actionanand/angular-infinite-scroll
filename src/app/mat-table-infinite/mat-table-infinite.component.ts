@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, NgZone, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
-import { filter, map, pairwise, throttleTime, timer } from 'rxjs';
+import { filter, map, pairwise, Subscription, throttleTime, timer } from 'rxjs';
 // import { MatTableDataSource } from '@angular/material/table';
 
 
@@ -31,7 +31,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./mat-table-infinite.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default
 })
-export class MatTableInfiniteComponent implements OnInit {
+export class MatTableInfiniteComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('scroller')
   scroller!: CdkVirtualScrollViewport;
@@ -39,6 +39,10 @@ export class MatTableInfiniteComponent implements OnInit {
   listItems: PeriodicElement[] = [];
 
   loading = false;
+
+  maxItems = 100;
+
+  unsub!: Subscription;
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
 
@@ -52,14 +56,14 @@ export class MatTableInfiniteComponent implements OnInit {
   constructor(private ngZone: NgZone) { }
 
   ngAfterViewInit(): void {
-    this.scroller.elementScrolled().pipe(
+    this.unsub = this.scroller.elementScrolled().pipe(
       map(() => this.scroller.measureScrollOffset('bottom')),
       pairwise(),
       filter(([y1, y2]) => (y2 < y1 && y2 < 140)),
       throttleTime(200)
     ).subscribe(() => {
       this.ngZone.run(() => {
-        this.fetchMore();
+        (this.maxItems > this.listItems.length) && this.fetchMore();
       });
     })
   }
@@ -67,6 +71,13 @@ export class MatTableInfiniteComponent implements OnInit {
   ngOnInit(): void {
     this.fetchMore();
   }
+
+  ngOnDestroy(): void {
+    if(this.unsub) {
+      this.unsub.unsubscribe();
+    }
+  }
+  
 
   fetchMore(): void  {
 

@@ -48,7 +48,7 @@
       </mat-list-item>
     </ng-container>
 
-    <div class="spinner-item">
+    <div class="spinner-item" *ngIf="isLoading">
       <mat-progress-spinner [mode]="'indeterminate'" [diameter]="50"></mat-progress-spinner>
     </div>
 

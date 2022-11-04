@@ -7,11 +7,14 @@ import { AppComponent } from './app.component';
 import { MatTableInfiniteModule } from './mat-table-infinite/mat-table-infinite.module';
 import { PicCardModule } from './pic-card/pic-card.module';
 import { MatSharedModule } from './shared/mat-shared.module';
+import { LayoutComponent } from './layout/layout.component';
+import { NavigationModule } from './navigation/navigation.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -19,14 +22,16 @@ import { MatSharedModule } from './shared/mat-shared.module';
     BrowserAnimationsModule,
     MatSharedModule,
     PicCardModule,
-    MatTableInfiniteModule
+    MatTableInfiniteModule,
+    NavigationModule
   ],
   providers: [],
   bootstrap: [AppComponent],
   exports: [
     MatSharedModule,
     PicCardModule,
-    MatTableInfiniteModule
+    MatTableInfiniteModule,
+    NavigationModule
   ]
 })
 export class AppModule { }
