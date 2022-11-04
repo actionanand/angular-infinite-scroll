@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MatTableInfiniteModule } from './mat-table-infinite/mat-table-infinite.module';
 import { PicCardModule } from './pic-card/pic-card.module';
 import { MatSharedModule } from './shared/mat-shared.module';
 
@@ -17,13 +18,15 @@ import { MatSharedModule } from './shared/mat-shared.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSharedModule,
-    PicCardModule
+    PicCardModule,
+    MatTableInfiniteModule
   ],
   providers: [],
   bootstrap: [AppComponent],
   exports: [
     MatSharedModule,
-    PicCardModule
+    PicCardModule,
+    MatTableInfiniteModule
   ]
 })
 export class AppModule { }

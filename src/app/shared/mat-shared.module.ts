@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
 
 
 const matModule = [
@@ -19,7 +20,7 @@ const matModule = [
   MatIconModule,
   MatMenuModule,
   MatProgressSpinnerModule,
-  
+  MatTableModule
 ];
 
 
