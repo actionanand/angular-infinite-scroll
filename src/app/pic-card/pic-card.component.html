@@ -1,3 +1,7 @@
+<mat-toolbar color="primary">
+  {{ title }}
+</mat-toolbar>
+
 <!-- <mat-list class="content">
   <mat-list-item *ngFor="let item of listItems">
     <img matListAvatar [src]="item.image">
@@ -30,7 +34,7 @@
   <mat-list>
     <ng-container *cdkVirtualFor="let item of listItems">
       <mat-list-item>
-        <img matListAvatar [src]="item.image">
+        <img matListAvatar [src]="item.image" alt="matImage">
         <h3 matLine> {{item.title}} </h3>
         <p matLine>
           <span> {{item.content}} </span>
@@ -43,5 +47,10 @@
         <mat-divider></mat-divider>
       </mat-list-item>
     </ng-container>
+
+    <div class="spinner-item">
+      <mat-progress-spinner [mode]="'indeterminate'" [diameter]="50"></mat-progress-spinner>
+    </div>
+
   </mat-list>
 </cdk-virtual-scroll-viewport>

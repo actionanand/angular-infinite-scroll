@@ -17,6 +17,8 @@ export class PicCardComponent implements OnInit, AfterViewInit {
 
   loading = false;
 
+  title = 'Infinite scroll list using "ScrollingModule"';
+
   constructor(private ngZone: NgZone) { }
 
   ngAfterViewInit(): void {
