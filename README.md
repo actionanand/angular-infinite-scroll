@@ -14,6 +14,12 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+## Deploy the app
+
+```bash
+ng deploy --base-href=/angular-infinite-scroll/
+```
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
@@ -36,3 +42,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 6. [Infinite Scrolling In Angular - repo](https://github.com/EJINEROZ/Infinite-Scroller-With-Angular)
 7. [Angular infinite table scroll](https://stackblitz.com/edit/angular-material-data-table-infinite-scroll)
 8. [Shared Modules in Angular](https://dev.to/jwp/shared-modules-in-angular-274k)
+9. [angular-cli-ghpages - gitHub deployemnt](https://www.npmjs.com/package/angular-cli-ghpages)
