@@ -43,6 +43,7 @@ export class MatTableInfiniteComponent implements OnInit, AfterViewInit, OnDestr
   maxItems = 100;
 
   unsub!: Subscription;
+  timerSub!: Subscription;
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
 
@@ -76,6 +77,8 @@ export class MatTableInfiniteComponent implements OnInit, AfterViewInit, OnDestr
     if(this.unsub) {
       this.unsub.unsubscribe();
     }
+
+    this.timerSub.unsubscribe();
   }
   
 
@@ -88,7 +91,7 @@ export class MatTableInfiniteComponent implements OnInit, AfterViewInit, OnDestr
 
 
     this.loading = true;
-    timer(1000).subscribe(() => {
+    this.timerSub = timer(1000).subscribe(() => {
       this.loading = false;
       this.listItems = [...this.listItems, ...newItems];
       this.dataSource = this.listItems;

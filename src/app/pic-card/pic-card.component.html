@@ -32,7 +32,7 @@
 
 <cdk-virtual-scroll-viewport #scroller itemSize="72" class="content">
   <mat-list>
-    <ng-container *cdkVirtualFor="let item of listItems">
+    <ng-container *cdkVirtualFor="let item of myData">
       <mat-list-item>
         <img matListAvatar [src]="item.image" alt="matImage">
         <h3 matLine> {{item.title}} </h3>

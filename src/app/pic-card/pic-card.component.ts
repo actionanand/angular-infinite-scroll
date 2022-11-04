@@ -14,12 +14,14 @@ export class PicCardComponent implements OnInit, AfterViewInit, OnDestroy {
   scroller!: CdkVirtualScrollViewport;
 
   listItems: any[] = [];
+  myData = this.listItems;
 
   isLoading = false;
 
-  maxItems = 100;
+  maxItems = 300;
 
   unsub!: Subscription;
+  timerSub!: Subscription;
 
   title = 'Infinite Scroll list using "ScrollingModule"';
 
@@ -46,6 +48,8 @@ export class PicCardComponent implements OnInit, AfterViewInit, OnDestroy {
     if(this.unsub) {
       this.unsub.unsubscribe();
     }
+
+    this.timerSub.unsubscribe();
   }
   
 
@@ -65,13 +69,12 @@ export class PicCardComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     this.isLoading = true;
-    timer(1000).subscribe(() => {
+    this.timerSub = timer(1000).subscribe(() => {
       this.isLoading = false;
       this.listItems = [...this.listItems, ...newItems];
+      this.myData = this.listItems;
     });
 
   }
-
-
 
 }
