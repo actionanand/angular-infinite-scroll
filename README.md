@@ -46,3 +46,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 10. [Modern CSS in Angular: Layouts](https://blog.angular.io/modern-css-in-angular-layouts-4a259dca9127)
 11. [Angular Flex-Layout](https://www.npmjs.com/package/@angular/flex-layout)
 12. [Angular Material Navigation Menu – Complete Responsive Navigation](https://code-maze.com/angular-material-navigation/)
+13. [StackBlitz link](https://stackblitz.com/edit/angular-ivy-fdcaaj)
